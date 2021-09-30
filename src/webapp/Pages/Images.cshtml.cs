@@ -15,7 +15,7 @@ namespace webapp.Pages
     public class ImagesModel : PageModel
     {
         public List<Uri> allBlobs = new List<Uri>();
-        public async void OnGet()
+        public async Task<IActionResult> OnGet()
         {
             string connectionString = "DefaultEndpointsProtocol=https;AccountName=lesson08;AccountKey=XxMdJ+CD+nBMgcwlEolv0zCJ9xBLc4mNPz0/HQDxWdgNi5Oo3bMUwt5o411CCsvp38EFQfp78BCcyARpIylluQ==;EndpointSuffix=core.windows.net";
 
@@ -38,6 +38,8 @@ namespace webapp.Pages
                 }
                 blobContinuationToken = response.ContinuationToken;
             } while (blobContinuationToken != null);
+
+            return Page();
         }
     }
 }
