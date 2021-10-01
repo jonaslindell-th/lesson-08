@@ -3,7 +3,8 @@
 @{
 }
 
-@foreach (var uri in Model.allBlobs)
+@foreach (var url in Model.allBlobs)
 {
-    <img src="@uri" />
+    <img style="max-width: 320px; max-height: 320px;" src="@url" />
 }
+

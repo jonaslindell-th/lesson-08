@@ -11,10 +11,10 @@ namespace consoleapp
     {
         public static void UploadBlob()
         {
-            var filePath = @"C:\Users\Jonas\Desktop\img\pipeline.png";
+            var filePath = @"C:\Users\Jonas\Desktop\img\woods.jpg";
             var connectionString = Environment.GetEnvironmentVariable("mykey");
 
-            BlobClient blobClient = new BlobClient(connectionString: connectionString, blobContainerName: "images", blobName: $"test-{Guid.NewGuid().ToString()}.png");
+            BlobClient blobClient = new BlobClient(connectionString: connectionString, blobContainerName: "images", blobName: $"img-{Guid.NewGuid().ToString()}.png");
 
             blobClient.Upload(filePath);
 
