@@ -9,15 +9,21 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Extensions.Configuration;
 
 namespace webapp.Pages
 {
     public class ImagesModel : PageModel
     {
+        public IConfiguration _config { get; set; }
+        public ImagesModel(IConfiguration config)
+        {
+            _config = config;
+        }
         public List<Uri> allBlobs = new List<Uri>();
         public async Task<IActionResult> OnGet()
         {
-            string connectionString = "DefaultEndpointsProtocol=https;AccountName=lesson08;AccountKey=XxMdJ+CD+nBMgcwlEolv0zCJ9xBLc4mNPz0/HQDxWdgNi5Oo3bMUwt5o411CCsvp38EFQfp78BCcyARpIylluQ==;EndpointSuffix=core.windows.net";
+            string connectionString = _config.GetConnectionString("AzureKey");
 
             var storageAccount = CloudStorageAccount.Parse(connectionString);
 
